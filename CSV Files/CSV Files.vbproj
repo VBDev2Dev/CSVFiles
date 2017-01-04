@@ -72,7 +72,6 @@
     <Compile Include="Fields.vb" />
     <Compile Include="Importing\CSVImporter.vb" />
     <Compile Include="Importing\FileImporter.vb" />
-    <Compile Include="Importing\Importing.vb" />
     <Compile Include="Importing\Importer.vb" />
     <Compile Include="NumberData.vb" />
     <Compile Include="Importing\NumberDataImporter.vb" />
