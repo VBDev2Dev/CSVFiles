@@ -44,12 +44,7 @@ Namespace Importing
         Protected Overridable Sub OnImportProgress(e As ImportProgressEventArgs)
             RaiseEvent ImportProgress(Me, e)
         End Sub
-        Protected Function PadID(ByVal id As String) As String
-            Do Until id.Length >= 7
-                id = "0" & id
-            Loop
-            Return id
-        End Function
+
         ''' <summary>
         ''' Call this before you do anything else in the Import function
         ''' </summary>
