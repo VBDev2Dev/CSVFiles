@@ -40,16 +40,24 @@ Module moduleMain
     Function SaveCSV(nums As IEnumerable(Of Integer)) As Task
         Return Task.Run(Sub()
                             Using str As New IO.FileStream(pth, IO.FileMode.Create)
-
+                                'Write required fields only
                                 nums.ToCsv(str,
                                            {
                                            NumberDataFields.Number,
-                                           NumberDataFields.EvenOdd,
-                                           NumberDataFields.SquareRoot
-                                           },
+                                           NumberDataFields.EvenOdd},
                                            Function(n) n,
-                                           Function(n) If(n Mod 2 = 0, NumberData.EvenOdd.Even, NumberData.EvenOdd.Odd),
-                                           Function(n) n ^ 0.5)
+                                           Function(n) If(n Mod 2 = 0, NumberData.EvenOdd.Even, NumberData.EvenOdd.Odd)
+                                          )
+                                'Write all data
+                                'nums.ToCsv(str,
+                                '           {
+                                '           NumberDataFields.Number,
+                                '           NumberDataFields.EvenOdd,
+                                '           NumberDataFields.SquareRoot
+                                '           },
+                                '           Function(n) n,
+                                '           Function(n) If(n Mod 2 = 0, NumberData.EvenOdd.Even, NumberData.EvenOdd.Odd),
+                                '           Function(n) n ^ 0.5)
 
                             End Using
                         End Sub)

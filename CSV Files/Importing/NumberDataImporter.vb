@@ -15,14 +15,19 @@
         End Function
 
         Protected Overrides Function ParseLine(Line() As String, Keys() As String) As NumberData
-            Return New NumberData With {
+            Dim tmp As New NumberData With {
                 .Number = CInt(Line(Array.IndexOf(Keys, NumberDataFields.Number))),
                 .Even = CType(
                 [Enum].Parse(GetType(NumberData.EvenOdd),
                              Line(Array.IndexOf(Keys, NumberDataFields.EvenOdd))),
-                       NumberData.EvenOdd),
-                .Sqrt = CDbl(Line(Array.IndexOf(Keys, NumberDataFields.SquareRoot)))}
+                       NumberData.EvenOdd)}
 
+            With tmp
+                If Array.IndexOf(Keys, NumberDataFields.SquareRoot) > -1 Then
+                    .Sqrt = CDbl(Line(Array.IndexOf(Keys, NumberDataFields.SquareRoot)))
+                End If
+            End With
+            Return tmp
         End Function
 
     End Class
